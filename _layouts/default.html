@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- KEEP ALL YOUR FONTS + CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ page.title }} | {{ site.title }}</title>
+
+  <!-- Fonts (same as your design) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="/assets/style.css">
 </head>
 
 <body>
+
+  <!-- ⭐ Star background -->
   <canvas id="stars"></canvas>
 
+  <!-- Everything visible goes ABOVE stars -->
   <div class="above-stars">
+
+    <!-- ── Navigation ── -->
     <nav>
       <a href="/" class="nav-logo">loujain.ahmed</a>
+
       <ul class="nav-links">
         <li><a href="/about">About</a></li>
         <li><a href="/research">Research</a></li>
@@ -18,13 +34,26 @@
       </ul>
     </nav>
 
-    {{ content }}
+    <!-- ── Page Content (Jekyll injects here) ── -->
+    <main>
+      {{ content }}
+    </main>
 
+    <!-- ── Footer ── -->
     <footer>
-      <!-- keep your footer -->
+      <span class="footer-note">loujainahmed.github.io</span>
+
+      <div class="footer-links">
+        <a href="https://github.com/loujainahmed" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        <a href="mailto:you@email.com">Email</a>
+      </div>
     </footer>
+
   </div>
 
+  <!-- ⭐ Star animation script -->
   <script src="/assets/stars.js"></script>
+
 </body>
 </html>
