@@ -1,194 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Your Name | Physics & Astrophysics</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+---
+layout: default
+title: Home
+---
 
-  <style>
-    /* --- GLOBAL --- */
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      color: #e0e6ff;
-      background: black;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3 {
-      font-weight: 300;
-      letter-spacing: 1px;
-    }
-
-    a {
-      color: #8ab4ff;
-      text-decoration: none;
-    }
-
-    section {
-      padding: 80px 10%;
-    }
-
-    /* --- STARFIELD BACKGROUND --- */
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/stardust.png');
-      z-index: -1;
-      animation: moveStars 100s linear infinite;
-    }
-
-    @keyframes moveStars {
-      from { background-position: 0 0; }
-      to { background-position: 10000px 5000px; }
-    }
-
-    /* --- NAVBAR --- */
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(8px);
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 15px;
-      z-index: 10;
-    }
-
-    nav a:hover {
-      color: white;
-    }
-
-    /* --- HERO --- */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-    }
-
-    .hero p {
-      max-width: 600px;
-      opacity: 0.8;
-    }
-
-    /* --- CARDS (BLOG PREVIEW) --- */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 12px;
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.1);
-    }
-
-    /* --- FOOTER --- */
-    footer {
-      text-align: center;
-      padding: 30px;
-      opacity: 0.6;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="stars"></div>
-
-<nav>
-  <a href="#about">About</a>
-  <a href="#research">Research</a>
-  <a href="#outreach">Outreach</a>
-  <a href="#blog">Writing</a>
-</nav>
-
-<!-- HERO -->
 <section class="hero">
   <h1>Your Name</h1>
-  <p>
-    Physics & Astrophysics Student exploring neutron stars, pulsars, and the structure of the universe.
-  </p>
+  <p>Physics & Astrophysics Student exploring neutron stars and the universe.</p>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I'm a physics and astrophysics student interested in high-energy astrophysics,
-    compact objects, and observational data analysis. My work focuses on understanding
-    extreme environments like pulsars and neutron stars.
-  </p>
-</section>
-
-<!-- RESEARCH -->
-<section id="research">
-  <h2>Research</h2>
-  <p>
-    Current projects include:
-  </p>
-  <ul>
-    <li>Pulsar timing and glitch analysis</li>
-    <li>X-ray emission from neutron stars</li>
-    <li>Data analysis using Python and astrophysical modeling</li>
-  </ul>
-</section>
-
-<!-- OUTREACH -->
-<section id="outreach">
-  <h2>Outreach</h2>
-  <p>
-    I enjoy making science accessible through educational content, short-form videos,
-    and community engagement. My goal is to make complex astrophysics concepts intuitive
-    and exciting.
-  </p>
-</section>
-
-<!-- BLOG / WRITING -->
-<section id="blog">
+<section>
   <h2>Featured Writing</h2>
-
   <div class="cards">
+    {% for post in site.posts limit:3 %}
     <div class="card">
-      <h3>What is a Pulsar?</h3>
-      <p>A beginner-friendly explanation of neutron stars and pulsars.</p>
-      <a href="#">Read more →</a>
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt }}</p>
+      <p>
+        {% for tag in post.tags %}
+          <span class="tag">#{{ tag }}</span>
+        {% endfor %}
+      </p>
+      <a href="{{ post.url }}">Read more →</a>
     </div>
-
-    <div class="card">
-      <h3>Understanding the H-R Diagram</h3>
-      <p>A guide to stellar evolution and classification.</p>
-      <a href="#">Read more →</a>
-    </div>
-
-    <div class="card">
-      <h3>Why Black Holes Aren’t Really "Holes"</h3>
-      <p>Breaking down common misconceptions in astrophysics.</p>
-      <a href="#">Read more →</a>
-    </div>
+    {% endfor %}
   </div>
 </section>
-
-<footer>
-  © 2026 Your Name | Built with GitHub Pages
-</footer>
-
-</body>
-</html>
