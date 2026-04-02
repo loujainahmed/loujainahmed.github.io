@@ -1,0 +1,9 @@
+<a class="blog-card" href="{{ post.url }}">
+  <p class="blog-date">{{ post.date | date: "%B %Y" }}</p>
+  <p class="blog-title">{{ post.title }}</p>
+  <p class="blog-excerpt">{{ post.excerpt }}</p>
+
+  {% for tag in post.tags %}
+    <span class="blog-tag">{{ tag }}</span>
+  {% endfor %}
+</a>
